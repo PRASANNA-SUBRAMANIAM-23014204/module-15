@@ -1,78 +1,33 @@
-
-# Ex.No:9C Expression Tree Evaluation
+# Ex.No:9D Expression Tree – Inorder and Postorder Traversal
 
 ## Aim
-To write a Python program to build and evaluate the given expression tree.
+To write a Python program to build the following expression tree and print the inorder and postorder traversal.
 
 
 ## Algorithm
 
-1. Start the program.
-2. Create nodes for operators and operands.
-3. Build the expression tree by connecting the nodes in the correct hierarchical structure.
-4. Define a recursive function `evaluate(root)`:
-   - If the node is a number (leaf), return it as a float.
-   - Else, recursively evaluate the left and right subtrees.
-   - Apply the operator at the current node to the results.
-5. Return the final result from the root node.
-6. End the program.
+1. Begin the program.
+2. Import the necessary modules (`build`, `Node`) from the `binarytree` package.
+3. Define a list `x` representing the binary tree in pre-order format.
+4. Use the `build()` function to construct the expression tree from the list.
+5. Print the inorder traversal of the expression tree using `.inorder`.
+6. Print the postorder traversal of the expression tree using `.postorder`.
+7. End the program.
 
 
 ## Program
 
 ```
-class Node:
-    def __init__(self, val, left=None, right=None):
-        self.val = val
-        self.left = left
-        self.right = right
- 
+from binarytree import build
 
-def isLeaf(node):
-    return node.left is None and node.right is None
- 
-def process(op, x, y):
-    if op == '+':
-        return x + y
-    if op == '-':
-        return x - y
-    if op == '*':
-        return x * y
-    if op == '/':
-        return x / y
- 
-def evaluate(root):
-
-    if root is None:
-        return 0
-  
-    if isLeaf(root):
-        return float(root.val)
-    
-    x = evaluate(root.left)
-    y = evaluate(root.right)
-    return (process(root.val, x, y))
-    
-
-
-root = Node('/')
-root.left = Node('*')
-root.right = Node('+')
-root.left.left = Node('+')
-root.left.right = Node(4)
-root.right.left = Node('-')
-root.right.right = Node(2)
-root.left.left.left = Node(3)
-root.left.left.right = Node(1)
-root.right.left.left = Node(9)
-root.right.left.right = Node(5)
-print('The value of the expression tree is',evaluate(root))
-
+l=["*","+","-",9,3,8,4]
+bt=build(l)
+print(bt.inorder)
+print(bt.postorder)
 ```
 
 ## OUTPUT
-![Screenshot 2025-05-05 005758](https://github.com/user-attachments/assets/797eb3fa-b809-4c88-abe3-9f7bcf3c2faf)
-
+![Screenshot 2025-05-05 010329](https://github.com/user-attachments/assets/5849de8f-be57-4566-82db-4f6e5379dbc9)
 
 ## RESULT
-Thus The result of the expression tree evaluation is the computed value derived from traversing the tree and applying the operations based on the operator nodes and operand values at the leaf nodes.
+Thus the program succesffuly completed the Build an Expression Tree and Print Inorder and Postorder Traversals and executrd successfully.
